@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch } from "react-redux";
 
-const InputPage = ({ title, inputType, action, nextPage }) => {
+const InputPage = ({ title, inputType, actionType, nextPage }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [inputValue, setInputValue] = useState("");
 
   const next = () => {
+    dispatch({ type: actionType, payload: inputValue });
     history.push(nextPage);
   };
 

@@ -16,8 +16,8 @@ function App() {
       <Route path="/feeling">
         <InputPage
           title="How are you feeling today?"
-          action={{}}
           inputType="number"
+          actionType="FEELING"
           nextPage="/understanding"
         />
       </Route>
@@ -25,23 +25,23 @@ function App() {
         <InputPage
           title="How well are you understanding the content?"
           inputType="number"
-          action={{}}
+          actionType="UNDERSTANDING"
           nextPage="/support"
         />
       </Route>
       <Route path="/support">
         <InputPage
           title="How well are you being supported?"
-          action={{}}
           inputType="number"
+          actionType="SUPPORT"
           nextPage="/comments"
         />
       </Route>
       <Route path="/comments">
         <InputPage
           title="Any comments you want to leave?"
-          action={{}}
           inputType="number"
+          actionType="COMMENTS"
           nextPage="/review"
         />
       </Route>
