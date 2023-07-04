@@ -40,7 +40,7 @@ function App() {
       <Route path="/comments">
         <InputPage
           title="Any comments you want to leave?"
-          inputType="number"
+          inputType="text"
           actionType="COMMENTS"
           nextPage="/review"
         />
