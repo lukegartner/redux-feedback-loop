@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import Feeling from "../InputPages/Feeling";
-import Understanding from "../InputPages/Understanding";
-import Support from "../InputPages/Support";
-import Comments from "../InputPages/Comments";
+import InputPage from "../InputPages/InputPage";
+import Review from "../InputPages/Review";
 
 function App() {
   return (
@@ -16,16 +14,39 @@ function App() {
         </header>
       </div>
       <Route path="/feeling">
-        <Feeling />
+        <InputPage
+          title="How are you feeling today?"
+          action={{}}
+          inputType="number"
+          nextPage="/understanding"
+        />
       </Route>
       <Route path="/understanding">
-        <Understanding />
+        <InputPage
+          title="How well are you understanding the content?"
+          inputType="number"
+          action={{}}
+          nextPage="/support"
+        />
       </Route>
       <Route path="/support">
-        <Support />
+        <InputPage
+          title="How well are you being supported?"
+          action={{}}
+          inputType="number"
+          nextPage="/comments"
+        />
       </Route>
       <Route path="/comments">
-        <Comments />
+        <InputPage
+          title="Any comments you want to leave?"
+          action={{}}
+          inputType="number"
+          nextPage="/review"
+        />
+      </Route>
+      <Route path="/review">
+        <Review />
       </Route>
     </Router>
   );
