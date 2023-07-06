@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 const Review = () => {
+  const history = useHistory();
   const { feeling, understanding, support, comments } = useSelector(
     (store) => store.feedbackInput
   );
@@ -10,6 +12,8 @@ const Review = () => {
       body: JSON.stringify({ feeling, understanding, support, comments }),
       headers: { "Content-Type": "application/json" },
     });
+
+    history.push("/complete");
   };
   return (
     <div>

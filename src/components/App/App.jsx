@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import InputPage from "../InputPages/InputPage";
 import Review from "../InputPages/Review";
+import StartPage from "../StartPages/StartPage";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
           <h4>Don't forget it!</h4>
         </header>
       </div>
+      <Route path="/" exact>
+        <StartPage page="start" />
+      </Route>
       <Route path="/feeling">
         <InputPage
           title="How are you feeling today?"
@@ -47,6 +51,9 @@ function App() {
       </Route>
       <Route path="/review">
         <Review />
+      </Route>
+      <Route path="/complete">
+        <StartPage page="complete" />
       </Route>
     </Router>
   );

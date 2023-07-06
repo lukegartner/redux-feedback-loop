@@ -19,6 +19,9 @@ const feedbackInput = (state = {}, action) => {
   if (action.type === "COMMENTS") {
     return { ...state, comments: action.payload };
   }
+  if (action.type === "CLEAR_INPUTS") {
+    return {};
+  }
   return state;
 };
 

@@ -10,12 +10,15 @@ router.post("/", (req, res) => {
   `;
   const queryArgs = [feeling, understanding, support, comments];
 
-  pool.query(queryText, queryArgs).then(() => {
-    res.sendStatus(201).catch((error) => {
+  pool
+    .query(queryText, queryArgs)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
       console.log(error);
       res.sendStatus(500);
     });
-  });
 });
 
 module.exports = router;
