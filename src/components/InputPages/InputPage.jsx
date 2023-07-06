@@ -8,8 +8,15 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
   const [inputValue, setInputValue] = useState("");
 
   const next = () => {
-    dispatch({ type: actionType, payload: inputValue });
-    history.push(nextPage);
+    if (
+      (Number(inputValue) >= 0 && Number(inputValue) <= 5) ||
+      inputType === "text"
+    ) {
+      dispatch({ type: actionType, payload: inputValue });
+      history.push(nextPage);
+    } else {
+      alert("A value of 1 - 5 is required");
+    }
   };
 
   return (
