@@ -4,7 +4,13 @@ const Review = () => {
     (store) => store.feedbackInput
   );
 
-  const postFeedback = () => {};
+  const postFeedback = () => {
+    fetch("/feedback", {
+      method: "POST",
+      body: JSON.stringify({ feeling, understanding, support, comments }),
+      headers: { "Content-Type": "application/json" },
+    });
+  };
   return (
     <div>
       <h2>Review Your Feedback:</h2>
