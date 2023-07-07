@@ -17,6 +17,7 @@ const Review = () => {
   };
   return (
     <div>
+      <button onClick={() => history.goBack()}>Back</button>
       <h2>Review Your Feedback:</h2>
       <p>Feeling: {feeling}</p>
       <p>Understanding: {understanding}</p>

@@ -1,15 +1,24 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const InputPage = ({ title, inputType, actionType, nextPage }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const storeValue = useSelector(
+    (store) => store.feedbackInput[actionType.toLowerCase()]
+  );
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    if (storeValue) {
+      setInputValue(storeValue);
+    }
+  }, []);
 
   const next = () => {
     if (
-      (Number(inputValue) >= 0 && Number(inputValue) <= 5) ||
+      (Number(inputValue) >= 1 && Number(inputValue) <= 5) ||
       inputType === "text"
     ) {
       dispatch({ type: actionType, payload: inputValue });
@@ -21,6 +30,7 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
 
   return (
     <div>
+      <button onClick={() => history.goBack()}>Back</button>
       <h2>{title}</h2>
       <input
         type={inputType}
