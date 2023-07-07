@@ -2,13 +2,12 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/";
 
 // MUI
-import Box from "@mui/material/Box";
+
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { grey } from "@mui/material/colors";
 
 const StartPage = ({ page }) => {
   const history = useHistory();

@@ -2,6 +2,14 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+// MUI
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+
 const InputPage = ({ title, inputType, actionType, nextPage }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -29,18 +37,40 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
   };
 
   return (
-    <div>
-      <button onClick={() => history.goBack()}>Back</button>
-      <h2>{title}</h2>
-      <input
-        type={inputType}
-        value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-        }}
-      />
-      <button onClick={next}>Next</button>
-    </div>
+    <Card
+      sx={{
+        mt: 4,
+        width: "90%",
+        maxWidth: 850,
+        bgcolor: "#eceff1",
+        mx: "auto",
+      }}
+    >
+      <CardContent>
+        <Typography
+          variant="h4"
+          color="primary.main"
+          align="center"
+          sx={{ fontStyle: "none" }}
+        >
+          {title}
+        </Typography>
+        <TextField
+          variant="outlined"
+          label="1-5"
+          type={inputType}
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }}
+          sx={{}}
+        />
+      </CardContent>
+      <CardActions>
+        <Button onClick={() => history.goBack()}>Back</Button>
+        <Button onClick={next}>Next</Button>
+      </CardActions>
+    </Card>
   );
 };
 
