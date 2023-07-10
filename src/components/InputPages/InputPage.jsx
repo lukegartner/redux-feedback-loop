@@ -61,7 +61,13 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
         </Typography>
         {/* Number Page Input */}
         {inputType === "number" && (
-          <FormControl>
+          <FormControl
+            sx={{
+              mt: 2,
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
             <RadioGroup row>
               <FormControlLabel
                 value="1"
