@@ -9,6 +9,10 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
 
 const InputPage = ({ title, inputType, actionType, nextPage }) => {
   const dispatch = useDispatch();
@@ -55,16 +59,62 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
         >
           {title}
         </Typography>
-        <TextField
-          variant="outlined"
-          label="1-5"
-          type={inputType}
-          value={inputValue}
-          onChange={(e) => {
-            setInputValue(e.target.value);
-          }}
-          sx={{}}
-        />
+        {/* Number Page Input */}
+        {inputType === "number" && (
+          <FormControl>
+            <RadioGroup row>
+              <FormControlLabel
+                value="1"
+                onChange={(event) => setInputValue(event.target.value)}
+                control={<Radio />}
+                label="1"
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="2"
+                onChange={(event) => setInputValue(event.target.value)}
+                control={<Radio />}
+                label="2"
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="3"
+                onChange={(event) => setInputValue(event.target.value)}
+                control={<Radio />}
+                label="3"
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="4"
+                onChange={(event) => setInputValue(event.target.value)}
+                control={<Radio />}
+                label="4"
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="5"
+                onChange={(event) => setInputValue(event.target.value)}
+                control={<Radio />}
+                label="5"
+                labelPlacement="bottom"
+              />
+            </RadioGroup>
+          </FormControl>
+        )}
+
+        {/* Comment Page Input */}
+        {inputType === "text" && (
+          <TextField
+            variant="outlined"
+            label="comment"
+            type={inputType}
+            value={inputValue}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
+            sx={{}}
+          />
+        )}
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
         <Button onClick={() => history.goBack()}>Back</Button>
