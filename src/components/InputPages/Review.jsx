@@ -84,7 +84,7 @@ const Review = () => {
           </ListItemButton>
         </ListItem>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ justifyContent: "center" }}>
         <Button onClick={() => history.goBack()}>Back</Button>
         <Button variant="contained" onClick={postFeedback}>
           Submit

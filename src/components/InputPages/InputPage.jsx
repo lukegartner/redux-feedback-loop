@@ -66,7 +66,7 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
           sx={{}}
         />
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ justifyContent: "center" }}>
         <Button onClick={() => history.goBack()}>Back</Button>
         <Button onClick={next}>Next</Button>
       </CardActions>
