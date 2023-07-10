@@ -41,7 +41,7 @@ const Review = () => {
       }}
     >
       <CardContent>
-        <Typography variant="h4" align="center">
+        <Typography variant="h4" align="center" color="primary.main">
           Review Your Feedback
         </Typography>
         <List></List>
