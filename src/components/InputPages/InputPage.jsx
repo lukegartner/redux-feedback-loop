@@ -13,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
+import Container from "@mui/material/Container";
 
 const InputPage = ({ title, inputType, actionType, nextPage }) => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
         mx: "auto",
       }}
     >
-      <CardContent>
+      <CardContent sx={{ alignContent: "center" }}>
         <Typography
           variant="h4"
           color="primary.main"
@@ -110,16 +111,20 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
 
         {/* Comment Page Input */}
         {inputType === "text" && (
-          <TextField
-            variant="outlined"
-            label="comment"
-            type={inputType}
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-            }}
-            sx={{}}
-          />
+          <Container sx={{ mt: 2, width: "50%" }}>
+            <TextField
+              variant="outlined"
+              multiline
+              rows={2}
+              label="comments"
+              type={inputType}
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+              }}
+              sx={{ mx: "auto", width: "100%" }}
+            />
+          </Container>
         )}
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
