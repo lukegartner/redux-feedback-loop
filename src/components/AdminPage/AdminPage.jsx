@@ -6,6 +6,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { Container, Typography, Button } from "@mui/material";
 
+import FlagIcon from "@mui/icons-material/Flag";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+
 const AdminPage = () => {
   const dispatch = useDispatch();
 
@@ -31,11 +34,24 @@ const AdminPage = () => {
     { field: "understanding", headerName: "Understanding", width: 130 },
     { field: "support", headerName: "Support", width: 130 },
     { field: "comments", headerName: "Comments", width: 130 },
-    { field: "flagged", headerName: "Flagged", width: 70 },
+    {
+      field: "flagged",
+      headerName: <FlagIcon sx={{ color: "warning.main", mt: 3 }} />,
+      type: "boolean",
+      width: 70,
+      renderCell: (params) => {
+        return params.value ? (
+          <FlagIcon sx={{ color: "warning.main" }} />
+        ) : (
+          <CheckBoxOutlineBlankIcon />
+        );
+      },
+    },
   ];
 
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
 
+  // Add or Remove flag from all selected rows
   const flagSelected = () => {
     fetch("/feedback/flag", {
       method: "PUT",
@@ -58,6 +74,8 @@ const AdminPage = () => {
       })
       .catch((err) => console.error(err));
   };
+
+  //   Delete selected rows
   const deleteSelected = () => {
     fetch("/feedback", {
       method: "DELETE",
@@ -70,6 +88,7 @@ const AdminPage = () => {
       .catch((err) => console.error(err));
   };
 
+  //   Toggle flag on row when flagged cell is clicked
   const handleOnCellClick = ({ id, field, value, row }) => {
     if (field === "flagged") {
       fetch(`/feedback`, {
@@ -93,7 +112,9 @@ const AdminPage = () => {
   ]);
   return (
     <div>
-      <Container sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Container
+        sx={{ display: "flex", justifyContent: "space-between", my: 2 }}
+      >
         <Typography variant="h4" color="primary.main">
           Admin
         </Typography>
