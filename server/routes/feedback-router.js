@@ -35,4 +35,20 @@ router.get("/", (req, res) => {
     });
 });
 
+router.delete("/", (req, res) => {
+  const queryText = `
+  DELETE FROM feedback
+  WHERE id = ANY($1);`;
+
+  const queryArgs = [req.body];
+
+  pool
+    .query(queryText, queryArgs)
+    .then(() => res.sendStatus(204))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
