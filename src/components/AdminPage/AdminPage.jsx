@@ -39,9 +39,13 @@ const AdminPage = () => {
   const flagSelected = () => {
     fetch("/feedback", {
       method: "PUT",
-      body: "",
+      body: JSON.stringify(rowSelectionModel),
       headers: { "Content-Type": "application/json" },
-    });
+    })
+      .then(() => {
+        getFeedbackData();
+      })
+      .catch((err) => console.error(err));
   };
   const deleteSelected = () => {
     fetch("/feedback", {
@@ -50,7 +54,6 @@ const AdminPage = () => {
       headers: { "Content-Type": "application/json" },
     })
       .then(() => {
-        // get data
         getFeedbackData();
       })
       .catch((err) => console.error(err));

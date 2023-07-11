@@ -35,6 +35,24 @@ router.get("/", (req, res) => {
     });
 });
 
+router.put("/", (req, res) => {
+  const queryText = `
+  UPDATE feedback SET "flagged"=TRUE
+  WHERE id = ANY($1);
+  `;
+  const queryArgs = [req.body];
+
+  pool
+    .query(queryText, queryArgs)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 router.delete("/", (req, res) => {
   const queryText = `
   DELETE FROM feedback
