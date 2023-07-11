@@ -83,6 +83,14 @@ const AdminPage = () => {
         .catch((err) => console.error(err));
     }
   };
+
+  //   Table initially sorts by most recent first.
+  const [sortModel, setSortModel] = useState([
+    {
+      field: "id",
+      sort: "desc",
+    },
+  ]);
   return (
     <div>
       <Container sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -115,6 +123,8 @@ const AdminPage = () => {
         }}
         rowSelectionModel={rowSelectionModel}
         onCellClick={handleOnCellClick}
+        sortModel={sortModel}
+        onSortModelChange={(model) => setSortModel(model)}
       />
     </div>
   );
