@@ -1,9 +1,19 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+Redux Feedback Loop
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+A webpage to collect feedback input from users and display data for admins to review.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Screenshots
+
+![alt text](./screenshots/Screenshot-welcome.png)
+![alt text](./screenshots/Screenshot-radio.png)
+![alt text](./screenshots/Screenshot-comments.png)
+![alt text](./screenshots/Screenshot-review.png)
+![alt text](./screenshots/Screenshot-admin.png)
+
+## Built with
+
+Redux, React, Javascript, Material UI
