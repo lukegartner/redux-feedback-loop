@@ -37,7 +37,18 @@ const AdminPage = () => {
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
 
   const flagSelected = () => {
-    fetch("/feedback", {
+    fetch("/feedback/flag", {
+      method: "PUT",
+      body: JSON.stringify(rowSelectionModel),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(() => {
+        getFeedbackData();
+      })
+      .catch((err) => console.error(err));
+  };
+  const removeFlagSelected = () => {
+    fetch("/feedback/remove-flag", {
       method: "PUT",
       body: JSON.stringify(rowSelectionModel),
       headers: { "Content-Type": "application/json" },
@@ -58,12 +69,35 @@ const AdminPage = () => {
       })
       .catch((err) => console.error(err));
   };
+
+  const handleOnCellClick = ({ id, field, value, row }) => {
+    if (field === "flagged") {
+      fetch(`/feedback`, {
+        method: "PUT",
+        body: JSON.stringify({ ...row, flagged: !value }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(() => {
+          getFeedbackData();
+        })
+        .catch((err) => console.error(err));
+    }
+  };
   return (
     <div>
       <Container sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h4">Admin</Typography>
-        <Button onClick={flagSelected}>Flag</Button>
-        <Button onClick={deleteSelected}>Delete</Button>
+        <Typography variant="h4" color="primary.main">
+          Admin
+        </Typography>
+        <Button onClick={flagSelected} sx={{ color: "warning.main" }}>
+          Flag
+        </Button>
+        <Button onClick={removeFlagSelected} sx={{ color: "success.main" }}>
+          Remove Flag
+        </Button>
+        <Button onClick={deleteSelected} sx={{ color: "error.main" }}>
+          Delete
+        </Button>
       </Container>
       <DataGrid
         rows={feedbackData}
@@ -80,6 +114,7 @@ const AdminPage = () => {
           console.log(newRowSelectionModel);
         }}
         rowSelectionModel={rowSelectionModel}
+        onCellClick={handleOnCellClick}
       />
     </div>
   );

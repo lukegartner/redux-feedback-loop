@@ -36,8 +36,44 @@ router.get("/", (req, res) => {
 });
 
 router.put("/", (req, res) => {
+  const { id, flagged } = req.body;
+  const queryText = `
+  UPDATE feedback SET "flagged"=$2
+  WHERE id = $1;
+  `;
+  const queryArgs = [id, flagged];
+
+  pool
+    .query(queryText, queryArgs)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
+router.put("/flag", (req, res) => {
   const queryText = `
   UPDATE feedback SET "flagged"=TRUE
+  WHERE id = ANY($1);
+  `;
+  const queryArgs = [req.body];
+
+  pool
+    .query(queryText, queryArgs)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+router.put("/remove-flag", (req, res) => {
+  const queryText = `
+  UPDATE feedback SET "flagged"=FALSE
   WHERE id = ANY($1);
   `;
   const queryArgs = [req.body];
