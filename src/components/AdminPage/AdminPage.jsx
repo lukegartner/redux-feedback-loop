@@ -118,15 +118,21 @@ const AdminPage = () => {
         <Typography variant="h4" color="primary.main">
           Admin
         </Typography>
-        <Button onClick={flagSelected} sx={{ color: "warning.main" }}>
-          Flag
-        </Button>
-        <Button onClick={removeFlagSelected} sx={{ color: "success.main" }}>
-          Remove Flag
-        </Button>
-        <Button onClick={deleteSelected} sx={{ color: "error.main" }}>
-          Delete
-        </Button>
+
+        {/* Display options when rows are selected */}
+        {rowSelectionModel.length > 0 && (
+          <>
+            <Button onClick={flagSelected} sx={{ color: "warning.main" }}>
+              Flag
+            </Button>
+            <Button onClick={removeFlagSelected} sx={{ color: "success.main" }}>
+              Remove Flag
+            </Button>
+            <Button onClick={deleteSelected} sx={{ color: "error.main" }}>
+              Delete
+            </Button>
+          </>
+        )}
       </Container>
       <DataGrid
         rows={feedbackData}
