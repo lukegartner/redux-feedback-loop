@@ -25,8 +25,16 @@ const feedbackInput = (state = {}, action) => {
   return state;
 };
 
+const feedbackData = (state = [], action) => {
+  if (action.type === "SET_FEEDBACK_DATA") {
+    return action.payload;
+  }
+
+  return state;
+};
+
 // store
-const store = createStore(combineReducers({ feedbackInput }));
+const store = createStore(combineReducers({ feedbackInput, feedbackData }));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

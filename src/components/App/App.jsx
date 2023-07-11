@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./App.css";
 import ButtonAppBar from "../Header/ButtonAppBar";
 import InputPage from "../InputPages/InputPage";
 import Review from "../InputPages/Review";
 import StartPage from "../StartPages/StartPage";
+import AdminPage from "../AdminPage/AdminPage";
 
 function App() {
   return (
@@ -50,6 +50,9 @@ function App() {
       </Route>
       <Route path="/complete">
         <StartPage page="complete" />
+      </Route>
+      <Route path="/admin">
+        <AdminPage />
       </Route>
     </Router>
   );
