@@ -8,11 +8,11 @@ A webpage to collect feedback input from users and display data for admins to re
 
 ## Screenshots
 
+![alt text](./screenshots/Screenshot-admin.png)
 ![alt text](./screenshots/Screenshot-welcome.png)
 ![alt text](./screenshots/Screenshot-radio.png)
 ![alt text](./screenshots/Screenshot-comments.png)
 ![alt text](./screenshots/Screenshot-review.png)
-![alt text](./screenshots/Screenshot-admin.png)
 
 ## Built with
 
