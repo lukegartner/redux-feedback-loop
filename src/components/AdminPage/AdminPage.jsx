@@ -143,6 +143,7 @@ const AdminPage = () => {
         }}
         pageSizeOptions={[5, 10, 20, 50]}
         checkboxSelection
+        disableRowSelectionOnClick
         onRowSelectionModelChange={(newRowSelectionModel) => {
           setRowSelectionModel(newRowSelectionModel);
           console.log(newRowSelectionModel);
