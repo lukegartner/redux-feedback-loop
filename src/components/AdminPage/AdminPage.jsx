@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import DelteAlert from "./DeleteAlert";
 
 // MUI
 import { DataGrid } from "@mui/x-data-grid";
@@ -128,9 +129,7 @@ const AdminPage = () => {
             <Button onClick={removeFlagSelected} sx={{ color: "success.main" }}>
               Remove Flag
             </Button>
-            <Button onClick={deleteSelected} sx={{ color: "error.main" }}>
-              Delete
-            </Button>
+            <DelteAlert deleteSelected={deleteSelected} />
           </>
         )}
       </Container>
