@@ -69,7 +69,7 @@ const InputPage = ({ title, inputType, actionType, nextPage }) => {
               alignItems: "center",
             }}
           >
-            <RadioGroup row>
+            <RadioGroup row value={inputValue}>
               <FormControlLabel
                 value="1"
                 onChange={(event) => setInputValue(event.target.value)}
